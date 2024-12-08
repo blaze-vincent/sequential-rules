@@ -1,0 +1,11 @@
+
+with logging
+1 copy of example rule - 56ms
+100 copies - 80ms
+10000 copies - 342ms
+100000 copies - 805ms
+
+without logging
+1 copy - 13ms
+100 copies - 31ms
+10000 copies - 180ms
