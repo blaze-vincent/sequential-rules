@@ -1,5 +1,7 @@
 package dev.n1t;
 
+import dev.n1t.validator.Condition;
+
 import java.util.List;
 
 public class ExampleRule extends MessageRule {

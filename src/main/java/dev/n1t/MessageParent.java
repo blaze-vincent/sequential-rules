@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public abstract class MessageParent {
-    private List<Message> messages = Collections.synchronizedList(new ArrayList<>());
+    private final List<Message> messages = Collections.synchronizedList(new ArrayList<>());
 
     public void addMessage(Message message){
         messages.add(message);

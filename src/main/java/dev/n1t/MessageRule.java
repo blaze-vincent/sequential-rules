@@ -1,6 +1,9 @@
 package dev.n1t;
 
-public abstract class MessageRule implements Rule<ValidationRequest, MessageParent> {
+import dev.n1t.validator.Action;
+import dev.n1t.validator.Rule;
+
+public abstract class MessageRule extends Rule<ValidationRequest, MessageParent> {
     public abstract String getMessageText();
 
     public abstract Object getMessageValue(ValidationRequest validationRequest);
