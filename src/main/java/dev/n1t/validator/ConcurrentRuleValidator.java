@@ -1,23 +1,21 @@
-package dev.n1t;
+package dev.n1t.validator;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-public class MessageRuleValidator<T, U>{
-    public MessageRuleValidator(MessageRule ...rules){
+public class ConcurrentRuleValidator<T, U>{
+    public ConcurrentRuleValidator(Rule<T, U> ...rules){
         this.rules = List.of(rules);
     }
 
-    private final List<MessageRule> rules;
+    private final List<Rule<T, U>> rules;
 
-    public void runAllRules(ValidationRequest validationRequest, MessageParent targetMessageParent){
+    public void runAllRules(T input, U actionTarget){
         CountDownLatch latch = new CountDownLatch(rules.size());
 
-        for(MessageRule rule : rules){
+        for(Rule<T, U> rule : rules){
             Thread thread = new Thread(() -> {
-                rule.fire(validationRequest, targetMessageParent);
+                rule.fire(input, actionTarget);
                 latch.countDown();
             });
             thread.start();
