@@ -3,7 +3,7 @@ package dev.n1t.validator;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
-public class ConcurrentRuleValidator<T, U>{
+public class ConcurrentRuleValidator<T, U extends RuleTarget>{
     public ConcurrentRuleValidator(Rule<T, U> ...rules){
         this.rules = List.of(rules);
     }

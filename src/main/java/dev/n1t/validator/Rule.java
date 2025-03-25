@@ -7,7 +7,7 @@ import java.util.List;
  * @param <T> Type of data evaluated by conditions and read from to apply action
  * @param <U> Type of data action is to be performed on
  */
-public abstract class Rule<T, U> {
+public abstract class Rule<T, U extends RuleTarget> {
 
     public abstract String getName();
     public abstract List<Condition<T>> getConditions();
@@ -18,6 +18,7 @@ public abstract class Rule<T, U> {
             if(!condition.isMet(input))
                 return;
 
+        actionTarget.addRulesFired(getName());
         getAction().perform(input, actionTarget);
     };
 }
