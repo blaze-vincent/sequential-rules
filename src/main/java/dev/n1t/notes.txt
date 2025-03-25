@@ -1,11 +1,39 @@
+----------------
+old java threads
 
-with logging
-1 copy of example rule - 56ms
-100 copies - 80ms
-10000 copies - 342ms
-100000 copies - 805ms
+Rules run: 1000
+Time overall: 78ms
+Time per rule: 0.078ms
 
-without logging
-1 copy - 13ms
-100 copies - 31ms
-10000 copies - 180ms
+Rules run: 10000
+Time overall: 712ms
+Time per rule: 0.0712ms
+
+Rules run: 100000
+Time overall: 6731ms
+Time per rule: 0.06731ms
+
+Rules run: 1000000
+Time overall: 54539ms
+Time per rule: 0.054539ms
+----------------
+
+----------------
+new java virtual threads
+
+Rules run: 1000
+Time overall: 13ms
+Time per rule: 0.013ms (6x faster)
+
+Rules run: 10000
+Time overall: 27ms
+Time per rule: 0.0027ms (26.37x faster)
+
+Rules run: 100000
+Time overall: 83ms
+Time per rule: 8.3E-4ms (81.10x faster)
+
+Rules run: 1000000
+Time overall: 338ms
+Time per rule: 3.38E-4ms (161x faster)
+----------------

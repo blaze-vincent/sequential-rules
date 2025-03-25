@@ -14,19 +14,16 @@ public class ConcurrentRuleValidator<T, U>{
         CountDownLatch latch = new CountDownLatch(rules.size());
 
         for(Rule<T, U> rule : rules){
-            Thread thread = new Thread(() -> {
+            Thread.startVirtualThread(() -> {
                 rule.fire(input, actionTarget);
                 latch.countDown();
             });
-            thread.start();
         }
 
         try {
             latch.await();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
-        } finally {
-//            System.out.printf("The rules have finished running. Rules triggered: %s%n", targetMessageParent.getMessages());
         }
 
     }
