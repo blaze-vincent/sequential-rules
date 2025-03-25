@@ -2,6 +2,7 @@ package dev.n1t;
 
 import dev.n1t.validator.Condition;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExampleRule extends MessageRule {
@@ -12,11 +13,10 @@ public class ExampleRule extends MessageRule {
 
     @Override
     public List<Condition<ValidationRequest>> getConditions() {
-        return List.of(
-                req -> req.getForm().getTotalValue() < 10,
-                req -> req.getForm().getTotalValue() > 0
-        );
+        return conditions;
     }
+
+    private List<Condition<ValidationRequest>> conditions = new ArrayList<>();
 
     @Override
     public String getMessageText() {
