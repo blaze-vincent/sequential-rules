@@ -10,7 +10,9 @@ public abstract class MessageParent extends RuleTarget {
     private final List<Message> messages = Collections.synchronizedList(new ArrayList<>());
 
     public void addMessage(Message message){
-        messages.add(message);
+        synchronized (messages) {
+            messages.add(message);
+        }
     }
 
     public List<Message> getMessages(){
