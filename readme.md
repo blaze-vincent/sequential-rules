@@ -2,12 +2,12 @@
 
 ## What is it?
 
-This is a simple library providing utilities for running sequential rules.
+This is a library providing barebones utilities for evaluating rules in Java.
 
 ## Should I use it?
 
 - Do you want to write business rules without learning an entire ecosystem including a new programming language?
-- Does your project need to run lots of sequential exactly one time each?
+- Does your project need to run lots of sequential rules with no re-evaluation?
 
 If so, this library may be useful to your project.
 
@@ -23,6 +23,7 @@ FICO Blaze Advisor and Drools both offer business users a UI for editing rules, 
 effort to maintain, but didn't and never would see any use for a number of reasons. Both require our Java developers to
 spend a lot of time building specialized knowledge, including learning another programming language when they already
 know Java. Both introduce a substantial overhead to running what are essentially if/else statements.  
+### How is this different?
 This solution makes no far-fetched claims of enabling business users to change program logic. It takes advantage of the
 already-existing Java knowledge of our developers, allowing anyone on the team to modify rules. It provides a very slim
 framework for writing the if/else statements that our rules are, with lots of opportunity for performance gains.
