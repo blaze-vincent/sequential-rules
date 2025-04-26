@@ -1,9 +1,9 @@
-package dev.n1t.validator;
+package dev.n1t.srl;
 
 import java.util.List;
 
 /**
- *
+ * The base class from which all rules derive.
  * @param <T> Type of data evaluated by conditions and read from to apply action
  * @param <U> Type of data action is to be performed on
  */
