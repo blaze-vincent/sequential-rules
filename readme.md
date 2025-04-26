@@ -22,8 +22,10 @@ developers hate.
 FICO Blaze Advisor and Drools both offer business users a UI for editing rules, which require a somewhat high level of
 effort to maintain, but didn't and never would see any use for a number of reasons. Both require our Java developers to
 spend a lot of time building specialized knowledge, including learning another programming language when they already
-know Java. Both introduce a substantial overhead to running what are essentially if/else statements.  
+know Java. Both introduce a substantial overhead to running what are essentially if/else statements.
+
 ### How is this different?
+
 This solution makes no far-fetched claims of enabling business users to change program logic. It takes advantage of the
 already-existing Java knowledge of our developers, allowing anyone on the team to modify rules. It provides a very slim
 framework for writing the if/else statements that our rules are, with lots of opportunity for performance gains.
@@ -97,7 +99,7 @@ public abstract class MessageRule extends Rule<Form, MessageParent> {
         return (form, msgParent) -> msgParent.addMessage(
                 new Message(getName(), getMessageText(), getMessageValue(form)));
     }
-    
+
     // note that if rules of a certain type share common conditions
     // you can override Rule.fire() to run those conditions before evaluating
     // rule-specific conditions
@@ -147,6 +149,7 @@ public class ExampleRule extends MessageRule {
 Define a class extending <code>RuleValidator</code> for executing your rules.
 
 ```java
+// ExampleRuleset.java
 package dev.n1t;
 
 import dev.n1t.srl.Rule;
@@ -173,3 +176,18 @@ public class ExampleRuleset extends RuleValidator<Form, Form> {
 
 Finally, run rules by instantiating the class extending <code>RuleValidator</code> and calling <code>
 runAllRules()</code>.
+
+```java
+// App.java
+package dev.n1t;
+
+public class App {
+    public static void main(String[] args) {
+        ExampleRuleset ruleset = new ExampleRuleset();
+        Form form = new Form();
+
+        // If this looks silly, it's because the input is also the target
+        ruleset.runAllRules(form, form);
+    }
+}
+```
