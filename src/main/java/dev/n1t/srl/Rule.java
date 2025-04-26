@@ -20,5 +20,5 @@ public abstract class Rule<T, U extends RuleTarget> {
 
         actionTarget.addRulesFired(getName());
         getAction().perform(input, actionTarget);
-    };
+    }
 }
